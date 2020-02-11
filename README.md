@@ -1,4 +1,4 @@
-# guiaoXML
+# GUIÃO XML
 
 Guião de uma peça de teatro ou uma série constituido por temporadas, episodios e cenas ou apenas partes ou apenas cenas em XML.
 O guião tem um tipo de documento em XML definido em DTD e XSD.
@@ -20,6 +20,6 @@ style.css : documento CSS com a descrição do estilo dos elementos
 
 COMO VISUALIZAR O GUIÃO:
 
-Arrastar o ficheiro "guiao.XML" para o browser 
+Arrastar o ficheiro "guiao.xml" para o browser 
 
 NOTA: Por razões de segurança e outras desconhecidas o unico browser que suporta as transformações XSL é o internet explorer 11
