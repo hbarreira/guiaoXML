@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guiao xmlns="http://www.example.org/guiao" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.example.org/guiao guiao.xsd ">
+
+	<cabecalho>
+		<titulo>A historia do Julio</titulo>
+		<autor>Diogo Drenado</autor>
+		<autor>Pedro Fernandes</autor>
+		<data_publicacao>2018-12-23</data_publicacao>
+		<sinopse>Uma sinopse</sinopse>
+	</cabecalho>
+	
+	<personagem nome="Paulo" id="p301" descricao="descricao1"></personagem>
+	
+	<hierarquia>
+		
+		<temporada titulo="Paulo conhece o Julio" id="t1">
+
+			<personagem nome="Julio" id="p302" descricao="perigoso"/>
+			<personagem nome="Goncalo" id="p306" descricao="simpatico"/>
+		
+			<episodio titulo="Paulo ve o julio" id="ep11" sinopse="sinopse1">
+				<cena titulo="cena01" id="c111">
+					<contexto>
+						<local>escola</local>
+						<momento>fim de tarde</momento>
+					</contexto>
+					
+					<adereco nome="pistola" id="a101"></adereco>
+
+					<fala><refere ref="p301"/> Morre</fala>
+					<refere ref="p301"/> dispara no <refere ref="p302"/> com uma <refere ref="a101"/>.
+					<comentario>Silencio</comentario>
+					<refere ref="p302"></refere> desmaia.
+				</cena>
+				<cena titulo="cena02" id="c112">
+					<contexto>
+						<local>hospital</local>
+						<momento>noite</momento>
+					</contexto>
+
+					O <refere ref="p301"/> vai ao hospital visitar o <refere ref="p302"/>.
+					<fala><refere ref="p302"/>boas</fala>
+					<fala><refere ref="p301"/>tudo bem?</fala>
+					<refere ref="p302"/> morre.
+				</cena>
+			</episodio>
+
+			<episodio titulo="Paulo visita campa de julio" id="ep12" sinopse="sinopse3">
+				<cena titulo="cena12" id="c121">
+					<contexto>
+						<local>cemiterio</local>
+						<momento>fim de tarde</momento>
+					</contexto>
+
+					<personagem nome="Fabio" id="p303" descricao="primo do julio"></personagem>
+					<adereco nome="flores" id="a021"></adereco>
+
+					<refere ref="p301"/> vai ao cemiterio.
+					<fala><refere ref="p303"/>Vou por as flores aqui</fala>
+					<refere ref="p303"/> pousa as <refere ref="a021"/>. Depois vai embora.
+				</cena>
+			</episodio>
+			
+		</temporada>
+		
+	</hierarquia>
+	
+</guiao>

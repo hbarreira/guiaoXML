@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- entidade de atributos -->
+<!ENTITY % infcena "
+titulo CDATA #REQUIRED
+id ID #REQUIRED
+sinopse CDATA #IMPLIED
+">
+
+<!-- guiao -->
+<!ELEMENT guiao (cabecalho, personagem*, hierarquia)>
+
+
+<!-- cabecalho -->
+<!ELEMENT cabecalho (titulo,autor+,data_publicacao,sinopse?,personagem*)>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT data_publicacao (#PCDATA)>
+<!ELEMENT sinopse (#PCDATA)>
+
+
+<!-- personagem -->
+<!ELEMENT personagem EMPTY>
+<!ATTLIST personagem 
+	nome CDATA #REQUIRED
+	id ID #REQUIRED
+	descricao CDATA #REQUIRED
+>
+
+
+<!-- hierarquia de cenas -->
+<!ELEMENT hierarquia (personagem*,(temporada+|parte+|cena+))>
+
+<!-- temporada com episodios-->
+<!ELEMENT temporada (personagem*,episodio+)>
+<!ATTLIST temporada 
+	%infcena;
+>
+<!ELEMENT episodio (cena+)>
+<!ATTLIST episodio
+	%infcena;
+>
+
+<!-- em partes -->
+<!ELEMENT parte (cena+)>
+<!ATTLIST parte
+	%infcena;
+>
+
+<!-- cenas  com pcdata? -->
+<!ELEMENT cena (#PCDATA|contexto|fala|refere|comentario|adereco|personagem)*>
+<!ATTLIST cena
+	%infcena;
+>
+
+<!ELEMENT contexto (local,momento)>
+<!ELEMENT local (#PCDATA)>
+<!ELEMENT momento (#PCDATA)>
+
+<!ELEMENT fala (#PCDATA|comentario|refere)*>
+
+<!ELEMENT refere EMPTY>
+<!ATTLIST refere
+	ref IDREF #REQUIRED
+>
+<!ELEMENT comentario (#PCDATA)>
+<!ELEMENT adereco EMPTY>
+<!ATTLIST adereco
+	id ID #REQUIRED
+	nome CDATA #REQUIRED
+>

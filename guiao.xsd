@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+xmlns="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://www.example.org/guiao" 
+xmlns:xs="http://www.example.org/guiao" 
+elementFormDefault="qualified">
+
+	<!-- ATRIBUTUOS DA CENA -->
+	<attributeGroup name="infcena">
+		<attribute name="id" type="ID" use="required"/>
+		<attribute name="titulo" type="string" use="required"/>
+		<attribute name="sinopse" type="string" use="optional"/>
+	</attributeGroup>
+	
+	<!-- Criacao e definicao do elemento de topo(guiao) -->
+	<element name="guiao" type="xs:guiao"></element>
+	<complexType name="guiao">
+			<sequence>
+				<element name="cabecalho" type="xs:cabecalho"></element>
+				<element name="personagem" type="xs:personagens" minOccurs="0" maxOccurs="unbounded"></element>
+				<element name="hierarquia" type="xs:hierarquia"></element>
+			</sequence>
+	</complexType>
+	
+	<!-- CABECALHO -->
+	<complexType name="cabecalho">
+		<sequence>
+			<element name="titulo" type="string"></element>
+			<element name="autor" type="string" minOccurs='1' maxOccurs="unbounded"></element>
+			<element name="data_publicacao" type="date"></element>
+			<element name="sinopse" type="string" minOccurs="0" maxOccurs="1"></element>
+			<element name="personagem" type="xs:personagens" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	
+	<!-- PERSONAGEM -->
+	<complexType name="personagens">
+		<attribute name="id" type="ID" use="required"></attribute>
+		<attribute name="nome" type="string" use="required"></attribute>
+		<attribute name="descricao" type="string" use="required"></attribute>
+	</complexType>
+	
+	<!-- HIERARQUIA(personagem*,( temporada+ | parte+ | cena+ )) -->
+	<complexType name="hierarquia">
+		<sequence>
+			<element name="personagem" type="xs:personagens" maxOccurs="unbounded" minOccurs="0"></element>
+			<choice>
+				<element name="temporada" type="xs:temporadas" maxOccurs="unbounded" minOccurs="0"></element>
+				<element name="parte" type="xs:partes" maxOccurs="unbounded" minOccurs="0"></element>
+				<element name="cena" type="xs:cenas" maxOccurs="unbounded" minOccurs="0"></element>
+			</choice>
+		</sequence>
+	</complexType>
+	
+	<!-- TEMPORADA (personagens*,episodio+) -->
+	<complexType name="temporadas">
+		<sequence>
+			<element name="personagem" type="xs:personagens" maxOccurs="unbounded" minOccurs="0"></element>
+			<element name="episodio" type="xs:episodios" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+		<attributeGroup ref="xs:infcena"/>
+	</complexType>
+	
+	<!-- EPISODIO (cena+) -->
+	<complexType name="episodios">
+		<sequence>
+			<element name="personagem" type="xs:personagens" maxOccurs="unbounded" minOccurs="0"></element>
+			<element name="cena" type="xs:cenas" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+		<attributeGroup ref="xs:infcena"/>
+	</complexType>
+	
+	<!-- PARTE (cena+) -->
+	<complexType name="partes">
+		<sequence>
+			<element name="personagem" type="xs:personagens" maxOccurs="unbounded" minOccurs="0"></element>
+			<element name="cena" type="xs:cenas"></element>
+		</sequence>
+		<attributeGroup ref="xs:infcena"/>
+	</complexType>	
+	
+	<!-- CENA -->
+	<complexType name="cenas" mixed="true">
+		<sequence>
+			<element name="contexto" type="xs:contextos"></element>
+			<element name="personagem" type="xs:personagens" maxOccurs="unbounded" minOccurs="0"></element>
+			<choice minOccurs="1" maxOccurs="unbounded">
+				<element name="adereco" type="xs:aderecos"></element>
+				<element name="fala" type="xs:falas"></element>
+				<element name="refere" type="xs:referencia" ></element>
+				<element name="comentario" type="string"></element>
+			</choice>
+		</sequence>
+		<attributeGroup ref="xs:infcena"/>
+	</complexType>
+	
+	<!-- CONTEXTO -->
+	<complexType name="contextos">
+		<sequence>
+			<element name="local" type="string"></element>
+			<element name="momento" type="string"></element>
+		</sequence>
+	</complexType>
+	
+	<!-- ADERECO -->
+	<complexType name="aderecos" mixed="true">
+		<attribute name="id" type="ID" use="required"></attribute>
+		<attribute name="nome" type="string" use="required"></attribute>
+	</complexType>
+	
+	<!-- FALA -->
+	<complexType name="falas" mixed="true">
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<element name="refere" type="xs:referencia"></element>
+			<element name="comentario" type="string"></element>
+		</choice>
+	</complexType>
+	
+	<!-- REFERE  -->
+	<complexType name="referencia">
+		<attribute name="ref" type="IDREF" use="required"></attribute>
+	</complexType>	
+</schema>

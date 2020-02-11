@@ -1,0 +1,62 @@
+body {
+   	margin-left: 50px;
+   	background-color:#b3ccff;
+}
+
+h1{
+	margin-top: 15px;
+	margin-bottom: 40px;
+	text-align: center;
+	font-size: 150%;
+}
+h2{
+	font-size: 120%;
+	text-align:left;
+}
+
+h3 {
+	font-size: 170%;
+}
+
+h4 {
+	font-size: 130%;
+}
+
+h6{
+	font-size: 70%;	
+}
+.cena {
+	font-size: 90%;
+	font-weight: bold;
+}
+
+.refsolo,.lfala,.maior {
+	text-transform: uppercase;
+}
+
+.negrito {
+	font-weight: bold;
+}
+
+.lfala {
+	margin-left: 11cm;
+}
+
+.fala {
+	margin-left: 7cm;
+}
+
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+#meia {
+	height: 30%;
+}
+#full {
+	height: 15cm;
+}
