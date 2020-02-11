@@ -23,3 +23,5 @@ COMO VISUALIZAR O GUIÃO:
 Arrastar o ficheiro "guiao.xml" para o browser 
 
 NOTA: Por razões de segurança e outras desconhecidas o unico browser que suporta as transformações XSL é o internet explorer 11
+
+NOTA2: Recomendado o IDE Eclipse(com as ferramentas para XML) para visualizar melhor as Tranformações XSL
